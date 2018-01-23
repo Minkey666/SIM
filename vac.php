@@ -19,7 +19,8 @@
 		<!-- fonts -->
 
         <!--为提升加载速度注释此行
-        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />-->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+        -->
 
         <!-- ace styles -->
 
@@ -128,43 +129,20 @@
 
 				<div class="main-content">
 					<div class="page-content">
-						<div class="row">
-							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
 								<div class="row">
 									<div class="col-xs-12">
-										<h3 class="header smaller lighter blue">学生信息</h3>
-										<?php require ("search.php"); ?>
+										<h3 class="header smaller lighter blue">历史假期去向信息</h3>
 										<!-- 分割线 --><div class="hr hr-18 dotted hr-double"></div>
-										<div class="table-header">
-											详细信息
+										<div class="table-header" style="margin-bottom: 10px">
+											您正在查看学号为<?php $stuid =$_GET['stuid']; echo $stuid ?>的学生历史假期信息
 										</div>
 
-										<?php
-                                                // 生成SQL语句
-                                                $default_sql = "SELECT * FROM stu";
-                                                $receive_sql = isset($_GET['sql']) ? $_GET['sql'] : 0;
-                                                $sql = "";
-                                                if ($receive_sql){
-                                                    $sql = $receive_sql;
-                                                } else {
-                                                    $sql = $default_sql;
-                                                }
-                                                //引入表格
-                                                require("list.php");
-                                                //是否分页显示
-                                                if (isset($_GET['page'])) {
-                                                    showPagelist();
-                                                } else {
-                                                    showLists($sql);
-                                                }
-                                        ?>
+										<?php $stuid =$_GET['stuid']; require("list_vac.php"); ?>
 										<!-- 分割线 --><div class="hr hr-18 dotted hr-double"></div>
 
 									</div>
 								</div>
-							</div><!-- /.col -->
-						</div><!-- /.row -->
 					</div><!-- /.page-content -->
 				</div><!-- /.main-content -->
 
@@ -216,9 +194,10 @@
 		<!--[if !IE]> -->
 
         <!--为提升加载速度注释此行
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>-->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        -->
 
-		<!-- <![endif]-->
+        <!-- <![endif]-->
 
 		<!--[if IE]>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

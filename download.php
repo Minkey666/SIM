@@ -19,7 +19,8 @@
 		<!-- fonts -->
 
         <!--为提升加载速度注释此行
-        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />-->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+        -->
 
         <!-- ace styles -->
 
@@ -133,34 +134,40 @@
 								<!-- PAGE CONTENT BEGINS -->
 								<div class="row">
 									<div class="col-xs-12">
-										<h3 class="header smaller lighter blue">学生信息</h3>
-										<?php require ("search.php"); ?>
+										<h3 class="header smaller lighter blue">下载表格模板</h3>
 										<!-- 分割线 --><div class="hr hr-18 dotted hr-double"></div>
-										<div class="table-header">
-											详细信息
-										</div>
-
-										<?php
-                                                // 生成SQL语句
-                                                $default_sql = "SELECT * FROM stu";
-                                                $receive_sql = isset($_GET['sql']) ? $_GET['sql'] : 0;
-                                                $sql = "";
-                                                if ($receive_sql){
-                                                    $sql = $receive_sql;
-                                                } else {
-                                                    $sql = $default_sql;
-                                                }
-                                                //引入表格
-                                                require("list.php");
-                                                //是否分页显示
-                                                if (isset($_GET['page'])) {
-                                                    showPagelist();
-                                                } else {
-                                                    showLists($sql);
-                                                }
-                                        ?>
-										<!-- 分割线 --><div class="hr hr-18 dotted hr-double"></div>
-
+                                        <div style="font-size: 10px;color: brown">
+                                            * 请选择下载对应表格模板、填充数据后进行上传（自行生成的表格可能会读取失败），同时保证多余列内没有冗余数据<br><br>
+                                            * 请注意确认数据类型：除日期类型外，其余均为文本类型
+                                        </div><br><br>
+                                        <div class="row">
+                                            <div class="col-xs-12">
+                                                <div class="alert alert-info">
+                                                    <p>
+                                                        <a class="blue" id="show-option" href="excel/文学硕士通讯录.xlsx" title="explode on hide">
+                                                            <i class="icon-hand-right"></i>
+                                                            <u>文学硕士通讯录</u>
+                                                        </a>
+                                                    </p>
+                                                </div>
+                                                <div class="alert alert-info">
+                                                    <p>
+                                                        <a class="blue" id="show-option" href="excel/假期去向表.xlsx" title="explode on hide">
+                                                            <i class="icon-hand-right"></i>
+                                                            <u>假期去向表</u>
+                                                        </a>
+                                                    </p>
+                                                </div>
+                                                <div class="alert alert-info">
+                                                    <p>
+                                                        <a class="blue" id="show-option" href="excel/入党积极分子信息统计表.xlsx" title="explode on hide">
+                                                            <i class="icon-hand-right"></i>
+                                                            <u>入党积极分子信息统计表</u>
+                                                        </a>
+                                                    </p>
+                                                </div>
+                                            </div><!-- /.col -->
+                                        </div><!-- /.row -->
 									</div>
 								</div>
 							</div><!-- /.col -->
@@ -216,9 +223,10 @@
 		<!--[if !IE]> -->
 
         <!--为提升加载速度注释此行
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>-->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+        -->
 
-		<!-- <![endif]-->
+        <!-- <![endif]-->
 
 		<!--[if IE]>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

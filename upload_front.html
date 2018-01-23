@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<title>学生信息管理系统</title>
+
 		<!-- basic styles -->
 
 		<link href="ace/assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -18,10 +19,11 @@
 
 		<!-- fonts -->
 
-        <!--为提升加载速度注释此行
-        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />-->
+		<!--为提升加载速度注释此行
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+		-->
 
-        <!-- ace styles -->
+		<!-- ace styles -->
 
 		<link rel="stylesheet" href="ace/assets/css/ace.min.css" />
 		<link rel="stylesheet" href="ace/assets/css/ace-rtl.min.css" />
@@ -42,16 +44,7 @@
 		<!--[if lt IE 9]>
 		<script src="ace/assets/js/html5shiv.js"></script>
 		<script src="ace/assets/js/respond.min.js"></script>
-        <![endif]-->
-
-        <link rel="stylesheet" type="text/css" href="ace/thirdParty/easyui/themes/default/easyui.css">
-        <link rel="stylesheet" type="text/css" href="ace/thirdParty/easyui/themes/icon.css">
-        <link rel="stylesheet" href="ace/css/base.css"/>
-        <link rel="stylesheet" href="ace/css/style.css"/>
-        <script src="ace/thirdParty/jquery/jquery-1.9.1.min.js"></script>
-        <script src="ace/thirdParty/easyui/jquery.easyui.min.js"></script>
-        <script src="ace/thirdParty/easyui/easyui-lang-zh_CN.js"></script>
-
+		<![endif]-->
 	</head>
 
 	<body>
@@ -84,7 +77,7 @@
 
 				<div class="sidebar" id="sidebar">
 					<script type="text/javascript">
-						try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
+                        try{ace.settings.check('sidebar' , 'fixed')}catch(e){}
 					</script>
 
 					<div class="sidebar-collapse" id="sidebar-collapse" style="height: 100">
@@ -104,17 +97,17 @@
 							</a>
 						</li>
 						<li>
-                            <a href="upload_front.html">
-                                <i class="icon-list"></i>
-                                <span class="menu-text"> 批量上传资料 </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="download.php">
-                                <i class="icon-list-alt"></i>
-                                <span class="menu-text"> 下载表格模板 </span>
-                            </a>
-                        </li>
+							<a href="upload_front.html">
+								<i class="icon-list"></i>
+								<span class="menu-text"> 批量上传资料 </span>
+							</a>
+						</li>
+						<li>
+							<a href="download.php">
+								<i class="icon-list-alt"></i>
+								<span class="menu-text"> 下载表格模板 </span>
+							</a>
+						</li>
 					</ul><!-- /.nav-list -->
 
 					<div class="sidebar-collapse" id="sidebar-collapse">
@@ -122,46 +115,40 @@
 					</div>
 
 					<script type="text/javascript">
-						try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+                        try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
 					</script>
 				</div><!-- 导航边栏 -->
 
 				<div class="main-content">
+
 					<div class="page-content">
+						<div class="page-header">
+							<h3 class="header smaller lighter blue">批量上传资料</h3>
+						</div><!-- /.page-header -->
+						<div style="font-size: 10px;color: brown">
+							* 请选择下载表格模板、填充数据后进行上传（自行生成的表格可能会读取失败），同时保证多余列内没有冗余数据<br><br>
+							* 目前仅支持.xlsx文件，且文件大小<2M
+						</div><br><br>
 						<div class="row">
 							<div class="col-xs-12">
-								<!-- PAGE CONTENT BEGINS -->
-								<div class="row">
-									<div class="col-xs-12">
-										<h3 class="header smaller lighter blue">学生信息</h3>
-										<?php require ("search.php"); ?>
-										<!-- 分割线 --><div class="hr hr-18 dotted hr-double"></div>
-										<div class="table-header">
-											详细信息
-										</div>
-
-										<?php
-                                                // 生成SQL语句
-                                                $default_sql = "SELECT * FROM stu";
-                                                $receive_sql = isset($_GET['sql']) ? $_GET['sql'] : 0;
-                                                $sql = "";
-                                                if ($receive_sql){
-                                                    $sql = $receive_sql;
-                                                } else {
-                                                    $sql = $default_sql;
-                                                }
-                                                //引入表格
-                                                require("list.php");
-                                                //是否分页显示
-                                                if (isset($_GET['page'])) {
-                                                    showPagelist();
-                                                } else {
-                                                    showLists($sql);
-                                                }
-                                        ?>
-										<!-- 分割线 --><div class="hr hr-18 dotted hr-double"></div>
-
-									</div>
+								<div class="alert alert-info">
+									<i class="icon-hand-right"></i>
+									选择文件类型：
+									<form method="post" action="write.php" enctype="multipart/form-data">
+										<br>
+										<select  id="form-field-select-1" name="type">
+											<option value="">&nbsp;</option>
+											<option value="vac">假期去向表</optio>
+											<option value="info">通讯录</option>
+											<option value="party">入党积极分子信息统计表</option>
+										</select>
+										<br><br><br>
+										<input type="file" name="file" />
+										<br><br>
+										<!-- 提交-->
+										<input type="submit" value="提交" class="icon-ok btn btn-info">
+										<br>
+									</form>
 								</div>
 							</div><!-- /.col -->
 						</div><!-- /.row -->
@@ -215,8 +202,9 @@
 
 		<!--[if !IE]> -->
 
-        <!--为提升加载速度注释此行
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>-->
+		<!--为提升加载速度注释此行
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+		-->
 
 		<!-- <![endif]-->
 
