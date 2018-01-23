@@ -108,5 +108,6 @@ CREATE TABLE vac (
                                     
 
 ## 作者
-NAME:   Minkey
-EMAIL:  minkeymax@gmail.com
+NAME:   MinkeyNAME  :  Minkey
+EMAIL :  minkeymax@gmail.com
+GIT   :  https://github.com/Minkey666/SIM
